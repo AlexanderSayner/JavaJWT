@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 11
+      author: alex
+      comment: "Start data for employee table"
+      changes:
+        - insert:
+            schemaName: basic
+            tableName: employee
+            columns:
+              - column:
+                  name: firstname
+                  value: "Alexander"
+              - column:
+                  name: lastname
+                  value: "One"
+              - column:
+                  name: state
+                  value: "ru"
+              - column:
+                  name: email
+                  value: "awesome@email.ru"
