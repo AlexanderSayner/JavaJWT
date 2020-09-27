@@ -17,8 +17,9 @@ class DepartmentService(
     fun create(departmentDto: DepartmentDto): Department {
         val department = Department(
                 null,
-                departmentDto.name,
-                emptySet()
+                departmentDto.name
+//                ,
+//                emptySet()
         )
         logger.info("Saving new department $department")
         return departmentRepository.save(department)

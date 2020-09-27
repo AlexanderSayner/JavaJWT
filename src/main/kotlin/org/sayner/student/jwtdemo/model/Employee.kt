@@ -13,21 +13,21 @@ data class Employee(
         var lastname:String?,
         var state:String?,
         var email:String?,
-        @ManyToMany(fetch = FetchType.EAGER)
+        @ManyToMany(fetch = FetchType.LAZY)
         @JoinTable(
                 schema="basic",
                 name = "employee_and_role",
                 joinColumns = [JoinColumn(name = "employee_id")],
                 inverseJoinColumns = [JoinColumn(name = "employee_role_id")])
         var roles:Set<Role>,
-        @ManyToMany(fetch = FetchType.EAGER)
+        @ManyToMany(fetch = FetchType.LAZY)
         @JoinTable(
                 schema="basic",
                 name = "employee_department",
                 joinColumns = [JoinColumn(name = "employee_id")],
                 inverseJoinColumns = [JoinColumn(name = "department_id")])
         var departments:Set<Department>,
-        @ManyToMany(fetch = FetchType.EAGER)
+        @ManyToMany(fetch = FetchType.LAZY)
         @JoinTable(
                 schema="basic",
                 name = "employee_project",

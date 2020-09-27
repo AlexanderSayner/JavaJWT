@@ -20,7 +20,6 @@ class ProjectService(
                 projectDto.name,
                 projectDto.open_date,
                 projectDto.release_date,
-                emptySet(),
                 emptySet()
         )
         logger.info("Saving new project $project")
@@ -34,7 +33,7 @@ class ProjectService(
             project.name = projectDto.name
             project.open_date = projectDto.open_date
             project.release_date = projectDto.release_date
-            logger.info("Updating project $project")
+            logger.info("Updating project $projectDto")
             return projectRepository.save(project)
         }
         logger.error("Project with id=$id not found")
