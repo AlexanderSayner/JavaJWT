@@ -2,6 +2,7 @@ package org.sayner.student.jwtdemo.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import org.sayner.student.jwtdemo.dto.DepartmentDto
+import org.sayner.student.jwtdemo.dto.list.DepartmentListResponse
 import org.sayner.student.jwtdemo.model.Department
 import org.sayner.student.jwtdemo.service.DepartmentService
 import org.springframework.http.HttpStatus
@@ -15,8 +16,8 @@ class DepartmentController(
 ) {
     @Operation(summary = "Get all records from department table")
     @GetMapping
-    fun read(): ResponseEntity<List<Department>> =
-            ResponseEntity(departmentService.findAll(), HttpStatus.OK)
+    fun read(): ResponseEntity<DepartmentListResponse> =
+            ResponseEntity(DepartmentListResponse(departmentService.findAll()), HttpStatus.OK)
 
     @Operation(summary = "Create one more department")
     @PostMapping
