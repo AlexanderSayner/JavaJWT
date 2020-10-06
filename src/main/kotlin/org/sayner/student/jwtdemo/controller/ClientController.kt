@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/client")
 class ClientController(
         private val clientService: ClientService
-){
+) {
     @Operation(summary = "Get all records from client table")
     @GetMapping
     fun read(): ResponseEntity<List<Client>> =
