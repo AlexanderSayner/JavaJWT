@@ -2,6 +2,7 @@ package org.sayner.student.jwtdemo.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import org.sayner.student.jwtdemo.dto.ProjectDto
+import org.sayner.student.jwtdemo.dto.list.ProjectListResponse
 import org.sayner.student.jwtdemo.model.Project
 import org.sayner.student.jwtdemo.service.ProjectService
 import org.springframework.http.HttpStatus
@@ -15,8 +16,8 @@ class ProjectController(
 ) {
     @Operation(summary = "Get all records from project table")
     @GetMapping
-    fun read(): ResponseEntity<List<Project>> =
-            ResponseEntity(projectService.findAll(), HttpStatus.OK)
+    fun read(): ResponseEntity<ProjectListResponse> =
+            ResponseEntity(ProjectListResponse(projectService.findAll()), HttpStatus.OK)
 
     @Operation(summary = "Create one more project")
     @PostMapping
