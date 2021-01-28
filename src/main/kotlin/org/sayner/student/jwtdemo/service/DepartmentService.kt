@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class DepartmentService(
-        private val departmentRepository: DepartmentRepository
+    private val departmentRepository: DepartmentRepository
 ) {
     private val logger = LoggerFactory.getLogger(DepartmentService::class.java)
 
@@ -16,8 +16,8 @@ class DepartmentService(
 
     fun create(departmentDto: DepartmentDto): Department {
         val department = Department(
-                null,
-                departmentDto.name
+            null,
+            departmentDto.name
 //                ,
 //                emptySet()
         )

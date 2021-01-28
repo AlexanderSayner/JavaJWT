@@ -12,8 +12,8 @@ import java.util.stream.Collectors
 
 @Service
 class StateService(
-        private val projectRepository: ProjectRepository,
-        private val stateRepository: StateRepository
+    private val projectRepository: ProjectRepository,
+    private val stateRepository: StateRepository
 ) {
     private val logger = LoggerFactory.getLogger(StateService::class.java)
 
@@ -25,11 +25,11 @@ class StateService(
             throw IllegalStateException("Нет проекта с id $projectId")
         }
         val state = State(
-                null,
-                stateDto.state,
-                stateDto.startDate,
-                stateDto.endDate,
-                optional.get()
+            null,
+            stateDto.state,
+            stateDto.startDate,
+            stateDto.endDate,
+            optional.get()
         )
         logger.info("Saving new state $stateDto")
         return stateRepository.save(state)
@@ -59,15 +59,16 @@ class StateService(
         val opt = projectRepository.findById(projectId)
         if (opt.isPresent) {
             return opt.get().states
-                    .stream()
-                    .map { entity ->
-                        StateIdDto(
-                                entity.id ?: -1,
-                                entity.state ?: "none",
-                                entity.startDate ?: LocalDate.EPOCH,
-                                entity.endDate ?: LocalDate.EPOCH)
-                    }
-                    .collect(Collectors.toList())
+                .stream()
+                .map { entity ->
+                    StateIdDto(
+                        entity.id ?: -1,
+                        entity.state ?: "none",
+                        entity.startDate ?: LocalDate.EPOCH,
+                        entity.endDate ?: LocalDate.EPOCH
+                    )
+                }
+                .collect(Collectors.toList())
         }
         throw IllegalStateException("I can't find project with id=$projectId")
     }

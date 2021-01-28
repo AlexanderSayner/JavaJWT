@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/project")
 class ProjectController(
-        private val projectService: ProjectService
+    private val projectService: ProjectService
 ) {
     @Operation(summary = "Get all records from project table")
     @GetMapping
     fun read(): ResponseEntity<List<Project>> =
-            ResponseEntity(projectService.findAll(), HttpStatus.OK)
+        ResponseEntity(projectService.findAll(), HttpStatus.OK)
 
     @Operation(summary = "Create one more project")
     @PostMapping
     fun create(@RequestBody projectDto: ProjectDto): ResponseEntity<Project> =
-            ResponseEntity(projectService.create(projectDto), HttpStatus.OK)
+        ResponseEntity(projectService.create(projectDto), HttpStatus.OK)
 
     @Operation(summary = "Update project")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody projectDto: ProjectDto): ResponseEntity<Project> =
-            ResponseEntity(projectService.update(id, projectDto), HttpStatus.OK)
+        ResponseEntity(projectService.update(id, projectDto), HttpStatus.OK)
 
     @Operation(summary = "Delete project")
     @DeleteMapping("/{id}")

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class ProjectService(
-        private val projectRepository: ProjectRepository
+    private val projectRepository: ProjectRepository
 ) {
     private val logger = LoggerFactory.getLogger(ProjectService::class.java)
 
@@ -16,11 +16,11 @@ class ProjectService(
 
     fun create(projectDto: ProjectDto): Project {
         val project = Project(
-                null,
-                projectDto.name,
-                projectDto.open_date,
-                projectDto.release_date,
-                emptySet()
+            null,
+            projectDto.name,
+            projectDto.open_date,
+            projectDto.release_date,
+            emptySet()
         )
         logger.info("Saving new project $project")
         return projectRepository.save(project)

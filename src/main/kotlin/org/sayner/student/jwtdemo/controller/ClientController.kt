@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/client")
 class ClientController(
-        private val clientService: ClientService
-){
+    private val clientService: ClientService
+) {
     @Operation(summary = "Get all records from client table")
     @GetMapping
     fun read(): ResponseEntity<List<Client>> =
-            ResponseEntity(clientService.findAll(), HttpStatus.OK)
+        ResponseEntity(clientService.findAll(), HttpStatus.OK)
 
     @Operation(summary = "Create one more client")
     @PostMapping
     fun create(@RequestBody clientDto: ClientDto): ResponseEntity<Client> =
-            ResponseEntity(clientService.create(clientDto), HttpStatus.OK)
+        ResponseEntity(clientService.create(clientDto), HttpStatus.OK)
 
     @Operation(summary = "Update client")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody clientDto: ClientDto): ResponseEntity<Client> =
-            ResponseEntity(clientService.update(id, clientDto), HttpStatus.OK)
+        ResponseEntity(clientService.update(id, clientDto), HttpStatus.OK)
 
     @Operation(summary = "Delete client")
     @DeleteMapping("/{id}")

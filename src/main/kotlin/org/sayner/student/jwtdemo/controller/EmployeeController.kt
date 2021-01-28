@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/employee")
 class EmployeeController(
-        private val employeeService: EmployeeService
+    private val employeeService: EmployeeService
 ) {
     @Operation(summary = "Get all records from employee table")
     @GetMapping
     fun read(): ResponseEntity<List<Employee>> =
-            ResponseEntity(employeeService.findAll(), OK)
+        ResponseEntity(employeeService.findAll(), OK)
 
     @Operation(summary = "Create one more employee")
     @PostMapping
     fun create(@RequestBody employeeDto: EmployeeDto): ResponseEntity<Employee> =
-            ResponseEntity(employeeService.createEmployee(employeeDto), OK)
+        ResponseEntity(employeeService.createEmployee(employeeDto), OK)
 
     @Operation(summary = "Update employee")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody employeeDto: EmployeeDto): ResponseEntity<Employee> =
-            ResponseEntity(employeeService.updateEmployee(id, employeeDto), OK)
+        ResponseEntity(employeeService.updateEmployee(id, employeeDto), OK)
 
     @Operation(summary = "Delete employee")
     @DeleteMapping("/{id}")
@@ -56,7 +56,7 @@ class EmployeeController(
     @Operation(summary = "Get employee projects")
     @GetMapping("/project/{employeeId}")
     fun getEmployeeProjects(@PathVariable employeeId: Int): ResponseEntity<Set<Project>> =
-            ResponseEntity(employeeService.getEmployeeProjects(employeeId), OK)
+        ResponseEntity(employeeService.getEmployeeProjects(employeeId), OK)
 
     @Operation(summary = "Bind employee role")
     @PostMapping("/binding/role")
@@ -75,7 +75,7 @@ class EmployeeController(
     @Operation(summary = "Get employee roles")
     @GetMapping("/role/{employeeId}")
     fun getEmployeeRoles(@PathVariable employeeId: Int): ResponseEntity<Set<Role>> =
-            ResponseEntity(employeeService.getEmployeeRoles(employeeId), OK)
+        ResponseEntity(employeeService.getEmployeeRoles(employeeId), OK)
 
     @Operation(summary = "Bind employee and department")
     @PostMapping("/binding/department")
@@ -94,5 +94,5 @@ class EmployeeController(
     @Operation
     @GetMapping("department/{employeeId}")
     fun getEmployeeDepartment(@PathVariable employeeId: Int): ResponseEntity<Set<Department>> =
-            ResponseEntity(employeeService.getEmployeeDepartment(employeeId), OK)
+        ResponseEntity(employeeService.getEmployeeDepartment(employeeId), OK)
 }

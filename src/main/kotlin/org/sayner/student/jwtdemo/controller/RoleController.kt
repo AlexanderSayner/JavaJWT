@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/role")
 class RoleController(
-        private val roleService: RoleService
+    private val roleService: RoleService
 ) {
     @Operation(summary = "Get all records from role table")
     @GetMapping
     fun read(): ResponseEntity<List<Role>> =
-            ResponseEntity(roleService.findAll(), HttpStatus.OK)
+        ResponseEntity(roleService.findAll(), HttpStatus.OK)
 
     @Operation(summary = "Create one more role")
     @PostMapping
     fun create(@RequestBody roleDto: RoleDto): ResponseEntity<Role> =
-            ResponseEntity(roleService.create(roleDto), HttpStatus.OK)
+        ResponseEntity(roleService.create(roleDto), HttpStatus.OK)
 
     @Operation(summary = "Update role")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody roleDto: RoleDto): ResponseEntity<Role> =
-            ResponseEntity(roleService.update(id, roleDto), HttpStatus.OK)
+        ResponseEntity(roleService.update(id, roleDto), HttpStatus.OK)
 
     @Operation(summary = "Delete role")
     @DeleteMapping("/{id}")

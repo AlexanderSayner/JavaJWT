@@ -1,6 +1,6 @@
 package org.sayner.student.jwtdemo.dto.request
 
 data class BindEmployeeDto(
-        val employeeId: Int,
-        val bindId:Int
+    val employeeId: Int,
+    val bindId: Int
 )

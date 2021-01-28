@@ -7,10 +7,10 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name="department",schema = "basic")
+@Table(name = "department", schema = "basic")
 data class Department(
-        @Id
-        @GeneratedValue(strategy= IDENTITY)
-        var id:Int?,
-        var name:String?
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    var id: Int?,
+    var name: String?
 )

@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service
 
 @Service
 class EmployeeService(
-        private val employeeRepository: EmployeeRepository,
-        private val projectRepository: ProjectRepository,
-        private val roleRepository: RoleRepository,
-        private val departmentRepository: DepartmentRepository
+    private val employeeRepository: EmployeeRepository,
+    private val projectRepository: ProjectRepository,
+    private val roleRepository: RoleRepository,
+    private val departmentRepository: DepartmentRepository
 ) {
     private val logger = getLogger(EmployeeService::class.java)
 
@@ -25,14 +25,14 @@ class EmployeeService(
 
     fun createEmployee(employeeDto: EmployeeDto): Employee {
         val newEmployee = Employee(
-                null,
-                employeeDto.firstname,
-                employeeDto.lastname,
-                employeeDto.state,
-                employeeDto.email,
-                emptySet(),
-                emptySet(),
-                emptySet()
+            null,
+            employeeDto.firstname,
+            employeeDto.lastname,
+            employeeDto.state,
+            employeeDto.email,
+            emptySet(),
+            emptySet(),
+            emptySet()
         )
         logger.info("Saving new employee $newEmployee")
         return employeeRepository.save(newEmployee)
@@ -73,10 +73,10 @@ class EmployeeService(
     fun unbindEmployeeProject(employeeId: Int, projectId: Int) {
         val employee = getEmployee(employeeId)
         val projectOptional =
-                employee.projects
-                        .stream()
-                        .filter { t -> t.id == projectId }
-                        .findFirst()
+            employee.projects
+                .stream()
+                .filter { t -> t.id == projectId }
+                .findFirst()
         if (projectOptional.isEmpty) {
             throw IllegalStateException("Employee has not project with id=$projectId")
         }
@@ -87,7 +87,7 @@ class EmployeeService(
     }
 
     fun getEmployeeProjects(employeeId: Int): Set<Project> =
-            getEmployee(employeeId).projects
+        getEmployee(employeeId).projects
 
     fun bindEmployeeRole(employeeId: Int, roleId: Int) {
         val employee = getEmployee(employeeId)
@@ -104,10 +104,10 @@ class EmployeeService(
     fun unbindEmployeeRole(employeeId: Int, roleId: Int) {
         val employee = getEmployee(employeeId)
         val roleOptional =
-                employee.roles
-                        .stream()
-                        .filter { t -> t.id == roleId }
-                        .findFirst()
+            employee.roles
+                .stream()
+                .filter { t -> t.id == roleId }
+                .findFirst()
         if (roleOptional.isEmpty) {
             throw IllegalStateException("Employee has not got role with id=$roleId")
         }
@@ -118,7 +118,7 @@ class EmployeeService(
     }
 
     fun getEmployeeRoles(employeeId: Int): Set<Role> =
-            getEmployee(employeeId).roles
+        getEmployee(employeeId).roles
 
     fun bindEmployeeDepartment(employeeId: Int, departmentId: Int) {
         val employee = getEmployee(employeeId)
@@ -135,10 +135,10 @@ class EmployeeService(
     fun unbindEmployeeDepartment(employeeId: Int, departmentId: Int) {
         val employee = getEmployee(employeeId)
         val departmentOptional =
-                employee.departments
-                        .stream()
-                        .filter { t -> t.id == departmentId }
-                        .findFirst()
+            employee.departments
+                .stream()
+                .filter { t -> t.id == departmentId }
+                .findFirst()
         if (departmentOptional.isEmpty) {
             throw IllegalStateException("Employee is not in department with id=$departmentId")
         }
@@ -149,7 +149,7 @@ class EmployeeService(
     }
 
     fun getEmployeeDepartment(employeeId: Int): Set<Department> =
-            getEmployee(employeeId).departments
+        getEmployee(employeeId).departments
 
     private fun getEmployee(employeeId: Int): Employee {
         val employeeOptional = employeeRepository.findById(employeeId)

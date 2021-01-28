@@ -14,9 +14,9 @@ class RoleService(private val roleRepository: RoleRepository) {
 
     fun create(roleDto: RoleDto): Role {
         val newRole = Role(
-                null,
-                roleDto.role,
-                roleDto.skillLevel
+            null,
+            roleDto.role,
+            roleDto.skillLevel
         )
         logger.info("Saving new role $newRole")
         return roleRepository.save(newRole)

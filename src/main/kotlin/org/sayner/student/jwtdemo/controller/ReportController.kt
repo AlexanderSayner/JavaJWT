@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/report")
 class ReportController(
-        private val reportService: ReportService
+    private val reportService: ReportService
 ) {
     @Operation(summary = "Get all reports from state table")
     @GetMapping
     fun read(): ResponseEntity<List<Report>> =
-            ResponseEntity(reportService.findAll(), HttpStatus.OK)
+        ResponseEntity(reportService.findAll(), HttpStatus.OK)
 
     @Operation(summary = "Create one more report")
     @PostMapping("/{clientId}")
     fun create(@PathVariable clientId: Int, @RequestBody dto: ReportDto): ResponseEntity<Report> =
-            ResponseEntity(reportService.create(clientId, dto), HttpStatus.OK)
+        ResponseEntity(reportService.create(clientId, dto), HttpStatus.OK)
 
     @Operation(summary = "Update report")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody reportDto: ReportDto): ResponseEntity<Report> =
-            ResponseEntity(reportService.update(id, reportDto), HttpStatus.OK)
+        ResponseEntity(reportService.update(id, reportDto), HttpStatus.OK)
 
     @Operation(summary = "Delete report")
     @DeleteMapping("/{id}")
@@ -38,5 +38,5 @@ class ReportController(
     @Operation(summary = "Getting clients reports")
     @GetMapping("/client/{id}")
     fun getClientReports(@PathVariable id: Int): ResponseEntity<Collection<Report>> =
-            ResponseEntity(reportService.getClientReports(id), HttpStatus.OK)
+        ResponseEntity(reportService.getClientReports(id), HttpStatus.OK)
 }

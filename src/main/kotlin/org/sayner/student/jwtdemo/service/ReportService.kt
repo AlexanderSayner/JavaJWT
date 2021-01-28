@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class ReportService(
-        private val reportRepository: ReportRepository,
-        private val clientRepository: ClientRepository
+    private val reportRepository: ReportRepository,
+    private val clientRepository: ClientRepository
 ) {
     private val logger = LoggerFactory.getLogger(ReportService::class.java)
 
@@ -22,10 +22,10 @@ class ReportService(
             throw IllegalStateException("Нет клиента с id $clientId")
         }
         val report = Report(
-                null,
-                reportDto.topic,
-                reportDto.message,
-                optional.get()
+            null,
+            reportDto.topic,
+            reportDto.message,
+            optional.get()
         )
         logger.info("Saving new state $reportDto")
         return reportRepository.save(report)

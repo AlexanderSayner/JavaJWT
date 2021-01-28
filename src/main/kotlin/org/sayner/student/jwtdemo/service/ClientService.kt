@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class ClientService(
-        private val clientRepository: ClientRepository
+    private val clientRepository: ClientRepository
 ) {
     private val logger = LoggerFactory.getLogger(ClientService::class.java)
 
@@ -16,11 +16,11 @@ class ClientService(
 
     fun create(clientDto: ClientDto): Client {
         val client = Client(
-                null,
-                clientDto.username,
-                clientDto.state,
-                clientDto.email,
-                emptySet()
+            null,
+            clientDto.username,
+            clientDto.state,
+            clientDto.email,
+            emptySet()
         )
         logger.info("Saving new client $clientDto")
         return clientRepository.save(client)

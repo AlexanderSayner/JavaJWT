@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/state")
 class StateController(
-        private val stateService: StateService
+    private val stateService: StateService
 ) {
     @Operation(summary = "Get all records from state table")
     @GetMapping
     fun read(): ResponseEntity<List<State>> =
-            ResponseEntity(stateService.findAll(), HttpStatus.OK)
+        ResponseEntity(stateService.findAll(), HttpStatus.OK)
 
     @Operation(summary = "Create one more state")
     @PostMapping("/{projectId}")
     fun create(@PathVariable projectId: Int, @RequestBody stateDto: StateDto): ResponseEntity<State> =
-            ResponseEntity(stateService.create(projectId, stateDto), HttpStatus.OK)
+        ResponseEntity(stateService.create(projectId, stateDto), HttpStatus.OK)
 
     @Operation(summary = "Update state")
     @PutMapping("/{id}")
     fun update(@PathVariable id: Int, @RequestBody stateDto: StateDto): ResponseEntity<State> =
-            ResponseEntity(stateService.update(id, stateDto), HttpStatus.OK)
+        ResponseEntity(stateService.update(id, stateDto), HttpStatus.OK)
 
     @Operation(summary = "Delete state")
     @DeleteMapping("/{id}")
@@ -39,5 +39,5 @@ class StateController(
     @Operation(summary = "Getting project states")
     @GetMapping("/project/{id}")
     fun getProjectState(@PathVariable id: Int): ResponseEntity<List<StateIdDto>> =
-            ResponseEntity(stateService.getProjectStates(id), HttpStatus.OK)
+        ResponseEntity(stateService.getProjectStates(id), HttpStatus.OK)
 }
